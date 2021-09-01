@@ -1,0 +1,18 @@
+@startuml
+start
+:Login to the Contract Management System;
+switch (Check User Level Permissions?)
+case ( hasManageContract )
+  :Mange Contract;
+case ( hasManageAuthoring ) 
+  :Manage Authoring;
+case ( hasManageAudit )
+  :Manage Audit;
+case ( hasManageReporting )
+  :Manage Reporting;
+case ( hasManageTendors )
+  :Manage Tendors;
+endswitch
+:Logout from the Contract Management System;
+stop
+@enduml

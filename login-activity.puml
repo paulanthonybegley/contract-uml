@@ -1,0 +1,16 @@
+@startuml
+start
+note left: Admin is registered
+:Admin Login ID and Password;
+while (Check Login ID and Password?)
+
+endwhile
+:Login to the System Successfully;
+:Set User Level and Permission;
+stop
+note right: Admin is registered
+
+@enduml
+
+
+

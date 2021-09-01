@@ -1,0 +1,95 @@
+@startuml
+class RoleClass{
+    + int role_id
+    + string role_title
+    + string role_description
+    +addRole()
+    +editRole()
+    +deleteRole()
+    +searchRole()
+    +assignRole()
+}
+class UserClass{
+    + int user_id
+    + int user_role_id
+    + string user_name
+    + string user_email
+    + date user_dob
+    + string user_address
+    + addUser()
+    + editUser()
+    + deleteUser()
+    + searchUser()
+
+}
+class PermissionClass{
+    + int permission_id
+    + int permission_role_id
+    + string permission_title
+    + string permission_module
+    + string permission_description
+    + addPermission()
+    + editPermission()
+    + deletePermission()
+    + searchPermission()
+}
+class TendersClass{
+    + int tender_id
+    + int tender_contract_id
+    + string tender_name
+    + string tender_type
+    + string tender_description
+    + addTenders()
+    + editTenders()
+    + deleteTenders()
+    + searchTenders()
+}
+class OligationsClass{
+    + int obligation_id
+    + string obligation_title
+    + string obligation_description
+    + string obligation_type
+    + addObligations()
+    + editObligations()
+    + deleteObligations()
+    + searchObligations()
+}
+class ReportingClass{
+    + int report_id
+    + string report_title
+    + string report_type
+    + string report_description
+    + addReporting()
+    + editReporting()
+    + deleteReporting()
+    + searchReporting()
+}
+class ContractClass{
+    + int contract_id
+    + string contract_tender
+    + string contract_type
+    + string contract_name
+    + string contract_description
+    + addContract()
+    + editContract()
+    + deleteContract()
+    + searchContract()
+}
+class AuditClass{
+    + int audit_id
+    + string audit_title
+    + string audit_description
+    + string audit_type
+    + addAudit()
+    + editAudit()
+    + deleteAudit()
+    + serachAudit()
+}
+RoleClass <|-- UserClass
+PermissionClass <|-- UserClass
+PermissionClass o-- TendersClass
+PermissionClass o-- OligationsClass
+PermissionClass o-- ReportingClass
+PermissionClass o-- ContractClass
+PermissionClass o-- AuditClass
+@enduml

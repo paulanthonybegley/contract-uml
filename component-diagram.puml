@@ -1,0 +1,45 @@
+@startuml
+skinparam componentStyle uml1
+
+interface "Data Access" as ContractDA
+
+
+interface "Database Connector" as DatabaseInterface
+
+interface "Encryption" as SecurityEncryption
+interface "Access Control" as SecurityAccessControl
+
+interface "Encryption" as PersistanceEncryption
+interface "Access Control" as PersistanceAccessControl
+
+
+
+[Contract Management System] ..|> [Contract]
+
+
+ContractDA - [Contract]
+
+SecurityEncryption - [Security]
+SecurityAccessControl - [Security]
+PersistanceEncryption - [Persistance]
+PersistanceAccessControl - [Persistance]
+DatabaseInterface - [Database]
+
+
+[Contract] --( [SecurityEncryption]
+
+
+[Contract] --( [SecurityAccessControl]
+
+[Contract] --( [PersistanceEncryption]
+
+[Persistance] --( [DatabaseInterface]
+
+
+[Contract] --( [PersistanceAccessControl]
+
+
+
+@enduml
+
+

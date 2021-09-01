@@ -1,0 +1,70 @@
+@startuml
+skinparam componentStyle uml1
+
+interface "Data Access" as ContractDA
+interface "Data Access" as AuthoringDA
+interface "Data Access" as AuditDA
+interface "Data Access" as ReportingDA
+interface "Data Access" as TendersDA
+
+interface "Database" as DatabaseInterface
+
+interface "Encryption" as SecurityEncryption
+interface "Access Control" as SecurityAccessControl
+
+interface "Encryption" as PersistanceEncryption
+interface "Access Control" as PersistanceAccessControl
+
+
+
+
+[Contract Management System] ..|> [Contract]
+[Contract Management System] ..|> [Authoring]
+[Contract Management System] ..|> [Audit]
+[Contract Management System] ..|> [Reporting]
+[Contract Management System] ..|> [Tenders]
+
+
+ContractDA - [Contract]
+AuthoringDA - [Authoring]
+AuditDA - [Audit]
+ReportingDA - [Reporting]
+TendersDA - [Tenders]
+SecurityEncryption - [Security]
+SecurityAccessControl - [Security]
+PersistanceEncryption - [Persistance]
+PersistanceAccessControl - [Persistance]
+DatabaseInterface - [Database]
+
+
+[Contract] --( [SecurityEncryption]
+[Authoring] --( [SecurityEncryption]
+[Audit] --( [SecurityEncryption]
+[Reporting] --( [SecurityEncryption]
+[Tenders] --( [SecurityEncryption]
+
+
+[Contract] --( [SecurityAccessControl]
+[Authoring] --( [SecurityAccessControl]
+[Audit] --( [SecurityAccessControl]
+[Reporting] --( [SecurityAccessControl]
+[Tenders] --( [SecurityAccessControl]
+
+[Contract] --( [PersistanceEncryption]
+[Authoring] --( [PersistanceEncryption]
+[Audit] --( [PersistanceEncryption]
+[Reporting] --( [PersistanceEncryption]
+[Tenders] --( [PersistanceEncryption]
+
+[Persistance] --( [DatabaseInterface]
+
+
+[Contract] --( [PersistanceAccessControl]
+[Authoring] --( [PersistanceAccessControl]
+[Audit] --( [PersistanceAccessControl]
+[Reporting] --( [PersistanceAccessControl]
+[Tenders] --( [PersistanceAccessControl]
+
+
+
+@enduml

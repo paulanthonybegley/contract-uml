@@ -1,0 +1,55 @@
+@startuml
+left to right direction
+actor "Super Admin" as sa
+actor "System User" as su
+actor "Contractor" as co
+actor "Customer" as cu
+
+
+  usecase "Manage Users and Full Application" as UC1
+  usecase "Manage Contract" as UC2
+  usecase "Manage Authoring" as UC3
+  usecase "Login and Logout from System" as UC4
+  usecase "Update my profile" as UC5
+  usecase "Change account password" as UC6
+  usecase "Manage Audit" as UC7
+  usecase "Manage obligations" as UC8
+  usecase "Manage tenders" as UC9
+  usecase "Create Quotations" as UC10
+  usecase "Check contract details" as UC11
+  usecase "Apply for contract" as UC12
+  usecase "View invoices" as UC13
+  usecase "Create contract request" as UC14
+  usecase "Make payment" as UC15
+
+sa -> UC1
+sa -> UC2
+sa -> UC3
+sa -> UC4
+sa -> UC5
+sa -> UC6
+
+su -> UC2 #line:red;line.bold;text:red
+su -> UC4 #line:red;line.bold;text:red
+su -> UC5 #line:red;line.bold;text:red
+su -> UC6 #line:red;line.bold;text:red
+su -> UC7 #line:red;line.bold;text:red
+su -> UC8 #line:red;line.bold;text:red
+su -> UC9 #line:red;line.bold;text:red
+
+co -> UC10 #green;line.dashed;text:green
+co -> UC11 #green;line.dashed;text:green
+co -> UC12 #green;line.dashed;text:green
+co -> UC4 #green;line.dashed;text:green
+co -> UC5 #green;line.dashed;text:green
+co -> UC6 #green;line.dashed;text:green
+
+cu -> UC4 #blue;line.dotted;text:blue 
+cu -> UC5 #blue;line.dotted;text:blue
+cu -> UC6 #blue;line.dotted;text:blue
+cu -> UC13 #blue;line.dotted;text:blue
+cu -> UC14 #blue;line.dotted;text:blue
+cu -> UC15 #blue;line.dotted;text:blue
+
+
+@enduml

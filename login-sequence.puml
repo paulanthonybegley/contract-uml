@@ -1,0 +1,30 @@
+@startuml
+actor       Admin       as Admin
+participant "Login Page" as LoginPage
+participant "Forgot Password" as ForgotPassword
+participant "Verification" as Verification
+participant "Database" as Database
+participant "Authenticate Page" as AuthenticatePage
+
+
+Admin -> LoginPage : Login To Page
+LoginPage -> ForgotPassword : Forgot Password
+LoginPage -> Verification : Check Login Details
+Verification -> Database : Valid Login Details
+Database -> AuthenticatePage : Provide Authorization for Access
+AuthenticatePage -> Database : Check Authentication for Access
+ForgotPassword -> Database : Check Security question and answer
+Database <- Database : Create session and store in database
+Database -> ForgotPassword : Send email to user to reset password
+Verification --> LoginPage : Invalid Login details
+Verication -> AuthenicatePage : Allow User to access the pages
+AuthenticatePage <- AuthenticatePage : Allow User to Access the internal Pages on base of User Token and Session
+Database --> LoginPage : Logout from Application
+AuthenticatePage -> Database : Destroy session and tokens from database
+Admin <- LoginPage : Login Successfully
+
+
+
+
+
+@enduml
